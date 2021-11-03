@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+let price = 0.00;
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
@@ -15,44 +19,98 @@ router.post('/results', function(req, res) {
 });
 module.exports = router;
 router.post('/order', function(req,res) {
-  // console.log(req.body.order);
-  // console.log(req.body.drink);
-  // console.log(req.body.pizza);
-  // console.log(req.body.free1);
-  // console.log(req.body.free1);
-  // console.log(req.body.free2);
-  // console.log(req.body.free3);
-  // console.log(req.body.free4);
-  // console.log(req.body.free5);
-  // console.log(req.body.topping1);
-  // console.log(req.body.topping2);
-  // console.log(req.body.toppings);
   let body = req.body;
   let order = getOrder(body);
   res.render('order', {
-    order: order
+    order: order,
+    price: price
   });
 })
 
 function getOrder(formData){
-  var choice;
   if (formData.order === "one"){
+    price = 10.00;
     return giveOrder1(formData);
   } else if (formData.order === "two"){
+    price = 2.00;
     return giveOrder2(formData);
   } else if (formData.order === "king"){
+    price = 11.00;
     return giveOrder3(formData);
   } else {
-    message = "try again";
-    res.render('index');
+    return giveOrder4();
+  }
+}
+
+let toppingOrder = [];
+function areThereToppings(formData){
+  if(formData.free1 === checked){
+    toppingOrder.push("pepperoni");
+  }
+  if(formData.free2 === checked){
+    toppingOrder.push("pineapple");
+  }
+  if(formData.free3 === checked){
+    toppingOrder.push("bacon");
+  }
+  if(formData.free4 === checked){
+    toppingOrder.push("olives");
+  }
+  if(formData.free5 === checked){
+    toppingOrder.push("garlic");
+  }
+  if(formData.topping1 != null){
+    price += 1.00;
+    toppingOrder.push(`${formData.topping1}`);
+  }
+  if(formData.topping2 != null){
+    price += 0.50;
+    toppingOrder.push(`${formData.topping2}`);
+  }
+  if(formData.toppings != null){
+    price += 0.50;
+    toppingOrder.push(`${formData.toppings}`);
+  }
+};
+function reverseArray(array){
+  let oppoArray = [];
+  for(let i=(array.length);i--;i>0){
+    let item = array.pop();
+    oppoArray.push(item);
+  }
+  return oppoArray;
+}
+function getItem(array){
+  let nextTopping = array.pop();
+  return nextTopping;
+}
+function search(top){
+  if(top.length > 0){
+    return " with ";
+  }else{
+    return "";
   }
 }
 function giveOrder1(formData){
-  return ``;
-}
+  // let toppingOrderCopy = toppingOrder;
+  // let array = reverseArray(toppingOrderCopy);
+  // let toppingText = ``;
+  // let areThereToppings = search(array);
+  // let firstTopping = array.pop();
+  // for(let i = toppingOrder.length; i--; i > 1){
+  //   let nextTopping = array.pop();
+  //   toppingText += `, ${nextTopping}`;
+  // }
+  // return `One ${formData.pizza} pizza  ${areThereToppings}${toppingText}`;
+  return toppingOrder;
+  }
+
 function giveOrder2(formData){
   return `One ${formData.drink}`;
 }
 function giveOrder3(formData){
-  return '';
+  return `and one $formData.drink}`;
+}
+function giveOrder4(){
+  return "Try Again";
 }

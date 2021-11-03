@@ -37,54 +37,54 @@ block content
       option(value = "two") 1 drink
       option(value = "king") King (1 large pizza and 1 drink)
     br
-    div.drink
+    div
       select(name="drink" id="drink")
         option(value="Sprite") Sprite
         option(value="Coke") Coke
         option(value="orange crush") Orange Crush
         option(value="A&W") A&W
     br
-    div.pizza
-      input(type="radio" name="pizza" id="deepDish" value="deepDish")
+    div
+      input(type="radio" name="pizza" id="deepDish" value="deep dish")
       label(for="deepDish") Deep Dish
       br
       input(type="radio" name="pizza" id="regular" value="regular" checked)
       label(for="regular") Regular
       br
-      input(type="radio" name="pizza" id="thinCrust" value="thinCrust")
+      input(type="radio" name="pizza" id="thinCrust" value="thin crust")
       label(for="thinCrust") Thin Crust
       br
-      input(type="radio" name="pizza" id="wholeWheat" value="wholeWheat")
+      input(type="radio" name="pizza" id="wholeWheat" value="whole wheat")
       label(for="wholeWheat") Whole Wheat
       br
-      input(type="radio" name="pizza" id="glutenFree" value="glutenFree")
+      input(type="radio" name="pizza" id="glutenFree" value="gluten free")
       label(for="glutenFree") Gluten Free
       br
 
       h4 Free Toppings:
       br
-      input(type="checkbox" id="pepperoni" name="free1")
+      input(type="checkbox" id="pepperoni" name="free1" value="checked")
       label(for="pepperoni") Pepperoni
       br
-      input(type="checkbox" id="pineapple" name="free2")
+      input(type="checkbox" id="pineapple" name="free2" value="checked")
       label(for="pineapple") Pineapple
       br
-      input(type="checkbox" id="bacon" name="free3")
+      input(type="checkbox" id="bacon" name="free3" value="checked")
       label(for="bacon") Bacon
       br
-      input(type="checkbox" id="olives" name="free4")
+      input(type="checkbox" id="olives" name="free4" value="checked")
       label(for="olives") Olives
       br
-      input(type="checkbox" id="garlic" name="free5")
+      input(type="checkbox" id="garlic" name="free5" value="checked")
       label(for="garlic") Garlic
       h4 Other toppings (subject to availability):
-      label(for="topping1") Other topping 1 ($0.75 extra):
+      label(for="topping1") Other topping 1 ($1.00 extra):
       input(type="text" id="topping1" name="topping1")
       br
       label(for="topping2") Other topping 2 ($0.50 extra):
       input(type="text" id="topping2" name="topping2")
       br
-      label(for="toppings") Other toppings ($0.25 extra each):
+      label(for="toppings") Other toppings ($0.50 extra total, for as many as you want):
       br
       textarea(id="toppings" name="toppings")
     br
